@@ -5,23 +5,7 @@ lines=[]
 with open("FiveLetterWords.txt",'r') as f:
     lines = f.readlines()
     lines = [line.strip() for line in lines]
-#     print(lines)
-    # print(len(lines))
 
-    
-
-# def make_guess(guess):
-# url = 'https://wordle-api.vercel.app/api/wordle'
-# data = {
-#         "guess" : "visit"
-#     }
-# # response = requests.get('https://wordle-api.vercel.app/api/wordle')
-# response = requests.post(url,json=data)
-# print(response.status_code)
-# print(response.json())
-
-# d = {'1':2}
-# print(d['1'])
 
 rdmWord = random.choice(lines)
 used_Word = []
@@ -46,7 +30,7 @@ while True:
                 if elt['scoring']['correct_idx']==True:
                     d.update({idx:elt['char']})
                 else:
-                    # l.update({idx:elt['char']})
+                    
                     if elt['char'] not in l:
                         l[elt['char']]=[]
                     l[elt['char']].append(idx)
@@ -61,25 +45,13 @@ while True:
     print(notinWord)
     # break
     if(len(l)!=0 or len(d)!=0):
-        # s=""*5
+
         st = ['','','','','']
         for i,ch in d.items():
             print("i=",i)
             st[i]=ch
             
         print(st)
-    # break        
-        # j=0
-        # for i in range(len(st)):
-        #     if(j<len(l) and st[i]==''):
-        #         st[i]=l[j]  
-        #         j+=1
-        #     elif j>=len(l):
-        #         break
-        # for i,ch in l.items():
-        #     for j in range(len(st)):
-        #         if j!=i and st[j]=='':
-        #             st[j]=ch
         for ch , lst in l.items():
             for j in range(len(st)):
                 if j not in lst and st[j]=='':
@@ -106,7 +78,6 @@ while True:
         print("newRandomWord  ",rdmWord)   
     else:
 
-        # for i in range(len(notinWord)):
         rdmWord = random.choice(lines)
         flag = True
         while True:
